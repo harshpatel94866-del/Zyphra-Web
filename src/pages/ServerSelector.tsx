@@ -40,7 +40,7 @@ const ServerSelector: React.FC = () => {
   const observerRef = useRef<IntersectionObserver | null>(null);
   const headerRef = useRef<HTMLDivElement>(null);
 
-  const DISCORD_CLIENT_ID = process.env.REACT_APP_DISCORD_CLIENT_ID || '1357971447439556680';
+  const DISCORD_CLIENT_ID = process.env.REACT_APP_DISCORD_CLIENT_ID || '1335133474226438176';
   const BOT_INVITE_URL = `https://discord.com/oauth2/authorize?client_id=${DISCORD_CLIENT_ID}&permissions=8&scope=bot%20applications.commands`;
 
   // ✅ Scroll Position Tracking for Parallax
