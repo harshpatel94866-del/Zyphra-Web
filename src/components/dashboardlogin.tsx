@@ -11,8 +11,8 @@ const DashboardLogin: React.FC = () => {
   const { mode, colors, solidBgClass } = useTheme();
 
   // Discord OAuth2 Configuration
-  const DISCORD_CLIENT_ID = process.env.REACT_APP_DISCORD_CLIENT_ID || '1357971447439556680';
-  const REDIRECT_URI = encodeURIComponent('http://localhost:3000/auth/callback');
+  const DISCORD_CLIENT_ID = process.env.REACT_APP_DISCORD_CLIENT_ID || '1335133474226438176';
+  const REDIRECT_URI = encodeURIComponent('http://paloma.hidencloud.com:25255/auth/callback');
   const DISCORD_OAUTH_URL = `https://discord.com/api/oauth2/authorize?client_id=${DISCORD_CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=code&scope=identify%20guilds`;
 
   // Check if user is already logged in (non-blocking)
