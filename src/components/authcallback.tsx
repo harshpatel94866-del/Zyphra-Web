@@ -29,8 +29,9 @@ const AuthCallback: React.FC = () => {
         setStatus('authenticating');
 
         // Send code to your backend API
-        const response = await api.post('/auth/discord', {
+        const response = await api.post('http://172.174.246.240:25255/api/auth/discord ', {
           code,
+          redirect_uri: `${window.location.origin}/auth/callback`
         });
 
         // Store token and user data with consistent keys
