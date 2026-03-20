@@ -101,9 +101,11 @@ const StatusPage: React.FC = () => {
     let OverallIcon = CheckCircle2;
 
     if (statusData) {
-        const offlineShards = statusData.per_shard.filter(s => s.status === 'offline').length;
-        const degradedShards = statusData.per_shard.filter(s => s.status === 'degraded').length;
-        const offlineServices = statusData.services.filter(s => s.status === 'offline').length;
+        const shards = statusData.per_shard || [];
+        const services = statusData.services || [];
+        const offlineShards = shards.filter(s => s.status === 'offline').length;
+        const degradedShards = shards.filter(s => s.status === 'degraded').length;
+        const offlineServices = services.filter(s => s.status === 'offline').length;
 
         if (offlineShards > 0 || offlineServices > 0) {
             overallStatus = 'Partial System Outage';
@@ -189,7 +191,7 @@ const StatusPage: React.FC = () => {
                                 </div>
                                 
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                    {statusData.per_shard.map(shard => (
+                                    {(statusData.per_shard || []).map(shard => (
                                         <div 
                                             key={shard.id}
                                             className="rounded-xl border p-5 backdrop-blur-md transition-colors hover:border-[var(--theme-border-light)]"
@@ -236,7 +238,7 @@ const StatusPage: React.FC = () => {
                                     style={{ borderColor: modeStyle.border, backgroundColor: modeStyle.bgCard }}
                                 >
                                     <div className="divide-y" style={{ borderColor: modeStyle.border }}>
-                                        {statusData.services.map((service, idx) => (
+                                        {(statusData.services || []).map((service, idx) => (
                                             <div key={idx} className="p-5 flex items-center justify-between hover:bg-[var(--theme-bg-hover)] transition-colors">
                                                 <div>
                                                     <h4 className="font-bold text-sm">{service.name}</h4>
